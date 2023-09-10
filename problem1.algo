@@ -1,0 +1,42 @@
+FUNCTION sumOfDistinctElements(set1, set2)
+    VAR
+
+    BEGIN
+        distinctElements = EmptyArray()
+
+        FOR i = 1 TO length(set1) DO
+            IF !distinctElements.contains(set1[i]) THEN
+                distinctElements.push(set1[i])
+            END_IF
+        END_FOR
+
+        FOR i = 1 TO length(set2) DO
+            IF !distinctElements.contains(set2[i]) THEN
+                distinctElements.push(set2[i])
+            END_IF
+        END_FOR
+
+        distinctSum = 0
+
+        FOR i = 1 TO length(distinctElements) DO
+            distinctSum = distinctSum + distinctElements[i]
+        END_FOR
+
+        RETURN distinctSum
+END
+
+
+
+ALGORITHM sumOfDistinctElements_runner
+    VAR
+        set1:ARRAY_OF INTEGER[4];
+        set2:ARRAY_OF INTEGER[5];
+        result:STRING;
+    BEGIN
+        set1 := {3, 1, 7, 9}
+        set2 := {2, 4, 1, 9, 3}
+
+        result := sumOfDistinctElements(set1, set2)
+        Write("Sum of distinct elements:", result)
+    
+END
